@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Smithsons Logistics Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0F172A",
+    "light": "#1E293B",
+    "dark": "#020617"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -66,19 +66,36 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Smithsons Logistics",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "smithsons/introduction",
+              "smithsons/getting-started",
+              "smithsons/authentication"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "smithsons/api/orders",
+              "smithsons/api/trips",
+              "smithsons/api/expenses",
+              "smithsons/api/users"
+            ]
+          }
+        ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Smithsons Dashboard",
+          "href": "https://smithsons-logistics-frontend.onrender.com",
+          "icon": "box"
         }
       ]
     }
@@ -91,32 +108,30 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@smithsons.co.ke"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Admin Dashboard",
+      "href": "https://smithsons-logistics-frontend.onrender.com/admin/orders"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/Lipkariuki"
     }
   }
 }

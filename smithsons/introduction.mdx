@@ -1,0 +1,128 @@
+---
+title: Introduction
+description: Smithsons Logistics API documentation
+---
+
+# Smithsons Logistics API
+
+Welcome to the official documentation for **Smithsons Logistics** — a modern fleet and transport management platform built to power logistics operations at scale.
+
+Smithsons enables transport operators to:
+
+- Manage orders and dispatch workflows  
+- Track trips and delivery progress  
+- Record and reconcile expenses  
+- Calculate partner commissions dynamically  
+- Monitor platform revenue in real time  
+
+This documentation provides everything you need to integrate with the Smithsons API.
+
+---
+
+## 🚀 What is Smithsons?
+
+Smithsons Logistics is a SaaS platform designed for transport companies, fleet operators, and logistics businesses that need:
+
+- Structured trip tracking  
+- Financial visibility across orders  
+- Driver and partner accountability  
+- Commission-based revenue tracking  
+
+It is built with:
+
+- **FastAPI** backend  
+- JWT-based authentication  
+- RESTful API architecture  
+- Role-based access control (Admin, Driver, Partner)  
+
+---
+
+## 🌍 Base URL
+
+Production:
+
+https://api.smithsons.co.ke
+
+
+
+Local development:
+
+http://127.0.0.1:8000
+
+---
+
+
+---
+
+## 🔐 Authentication
+
+All protected endpoints require a JWT token.
+
+Include your token in the `Authorization` header:
+
+```bash
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+
+Tokens are issued through the login endpoint.
+
+
+---
+
+## 📦 Core Resources
+
+Smithsons exposes the following primary resources:
+
+| Resource   | Description |
+|------------|------------|
+| Orders     | Customer transport orders |
+| Trips      | Trip assignments linked 1:1 to orders |
+| Expenses   | Trip-related operational expenses |
+| Users      | Admins, Drivers, and Partners |
+| Commission | Platform revenue tracking |
+
+
+---
+
+## 🛠 Example Request
+
+Fetch all orders (Admin):
+
+```bash
+curl -X GET https://api.smithsons.co.ke/admin/orders \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+Example response:
+```
+[
+  {
+    "id": 12,
+    "order_number": "DHL-2025-001",
+    "destination": "Nairobi",
+    "total_amount": 85000,
+    "status": "completed"
+  }
+]
+```
+---
+## 📈 Designed for Scale
+
+Smithsons is built with scalability in mind:
+
+Modular backend routers
+
+Role-based filtering handled server-side
+
+OpenAPI specification support
+
+Clean separation of business logic
+
+💬 Support
+
+For API support, integration questions, or enterprise inquiries:
+
+📩 support@smithsons.co.ke
+
+
