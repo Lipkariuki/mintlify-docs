@@ -1,15 +1,17 @@
 ---
 title: Getting Started
-description: Quickstart guide for integrating with the Smithsons Logistics API
+description: Quickstart guide for authenticating and making your first Smithsons Logistics API request
 ---
-
-
 
 This guide will help you authenticate and make your first request to the **Smithsons Logistics API** in minutes.
 
----
+## What You Will Do
 
-## 📋 Prerequisites
+1. Confirm your credentials and API base URL
+2. Log in and obtain a JWT access token
+3. Send an authenticated request to a protected endpoint
+
+## Prerequisites
 
 Before you begin, make sure you have:
 
@@ -18,8 +20,102 @@ Before you begin, make sure you have:
 - Your login credentials (email or phone + password)
 - A tool for making HTTP requests (e.g., curl, Postman, or your backend application)
 
----
-
-## 🌍 Base URL
+## Base URL
 
 ### Production
+`https://api.smithsons.co.ke`
+
+### Local development
+`http://127.0.0.1:8000`
+
+<Warning>
+Do not hardcode production tokens into frontend apps. Route API calls through a secure backend where possible.
+</Warning>
+
+## Step 1: Log In and Get an Access Token
+
+Use your Smithsons login credentials to authenticate and retrieve a token.
+
+```bash
+curl -X POST "https://api.smithsons.co.ke/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phone": "0722760992",
+    "password": "YOUR_PASSWORD"
+  }'
+```
+
+Example response:
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "bearer",
+  "user": {
+    "id": 7,
+    "name": "Operations Admin",
+    "role": "admin"
+  }
+}
+```
+
+<Tip>
+Some deployments may accept email instead of phone for login. Use the field format enabled in your Smithsons backend configuration.
+</Tip>
+
+## Step 2: Save the Token
+
+Use the returned `access_token` in every protected request:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## Step 3: Make Your First API Request
+
+Example: fetch orders for the admin dashboard.
+
+```bash
+curl -X GET "https://api.smithsons.co.ke/admin/orders" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+Example response:
+
+```json
+[
+  {
+    "id": 12,
+    "order_number": "DHL-2025-001",
+    "customer_name": "DHL",
+    "destination": "Nairobi",
+    "status": "completed",
+    "total_amount": 85000
+  }
+]
+```
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion icon="key" title="401 Unauthorized">
+    Your token may be missing, invalid, or expired. Log in again and confirm the request includes `Authorization: Bearer YOUR_ACCESS_TOKEN`.
+  </Accordion>
+  <Accordion icon="shield-exclamation" title="403 Forbidden">
+    Your account is authenticated but does not have permission for that route. For example, driver accounts should not call admin-only endpoints.
+  </Accordion>
+  <Accordion icon="globe" title="Connection or CORS errors">
+    Confirm you are using the correct base URL (`production` vs `local`) and that your backend allows requests from your application origin.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication Details" icon="lock" href="/smithsons/authentication">
+    Learn bearer token usage, security notes, and integration best practices.
+  </Card>
+  <Card title="Explore API Reference" icon="terminal">
+    Browse the full Smithsons API endpoints from the OpenAPI-generated reference.
+  </Card>
+</CardGroup>

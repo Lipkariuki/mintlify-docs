@@ -1,0 +1,50 @@
+---
+title: Users Guide
+description: Roles, permissions, and common user management patterns in Smithsons
+---
+
+Smithsons supports role-based access control across operational and admin workflows.
+
+## Roles
+
+| Role | Description |
+| --- | --- |
+| Admin | Manages operations, orders, trips, expenses, and users |
+| Driver | Handles assigned trips and operational updates |
+| Partner | Participates in partner-linked logistics and financial workflows |
+
+## Common User Management Tasks
+
+- Create staff or partner accounts
+- Assign roles and permissions
+- Update profile/contact details
+- Enable or disable access
+- Audit usage by role
+
+## Security Notes
+
+<Warning>
+Restrict admin account creation to trusted operational staff only. Admin roles can affect dispatch, finance, and user access.
+</Warning>
+
+- Use strong passwords and secure reset flows
+- Rotate credentials when staff changes occur
+- Review role assignments periodically
+
+## Example Request
+
+```bash
+curl -X GET "https://api.smithsons.co.ke/admin/users" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+## Related Pages
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock" href="/smithsons/authentication">
+    Learn how JWT tokens are issued and used.
+  </Card>
+  <Card title="Orders Guide" icon="box" href="/smithsons/api/orders">
+    Understand how users interact with order workflows.
+  </Card>
+</CardGroup>

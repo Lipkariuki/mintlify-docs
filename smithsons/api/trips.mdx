@@ -1,0 +1,42 @@
+---
+title: Trips Guide
+description: Overview of trip tracking workflows and trip-related API usage in Smithsons
+---
+
+Trips represent the execution layer of logistics operations in Smithsons, typically linked to an order.
+
+## What a Trip Tracks
+
+- Assigned driver or partner
+- Origin and destination
+- Dispatch and progress timestamps
+- Operational status updates
+- Expenses recorded during execution
+
+## Typical Trip Lifecycle
+
+1. Trip is created from an approved order
+2. Driver/partner is assigned
+3. Trip moves to active or in-transit state
+4. Expenses are captured during execution
+5. Trip is completed and reconciled
+
+## Common API Uses
+
+| Use case | Example |
+| --- | --- |
+| Dispatch board | List active trips |
+| Driver app | Fetch assigned trip details |
+| Ops monitoring | Update progress/status |
+| Finance reconciliation | View completed trip cost breakdown |
+
+## Example Request
+
+```bash
+curl -X GET "https://api.smithsons.co.ke/admin/trips" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+<Note>
+Exact route paths may vary depending on the backend router design. Use the OpenAPI-generated reference as the source of truth.
+</Note>

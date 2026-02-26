@@ -1,0 +1,57 @@
+---
+title: Orders Guide
+description: Business workflow overview for Smithsons order endpoints and statuses
+---
+
+This page explains how order data is typically used in Smithsons before you dive into the auto-generated API reference.
+
+## What an Order Represents
+
+An order is the primary transport job record in Smithsons. It usually includes:
+
+- Customer and destination details
+- Pricing and billing fields
+- Fulfillment status
+- Links to a trip record (when dispatched)
+
+## Common Order Workflow
+
+1. Create an order
+2. Validate pricing and route details
+3. Dispatch and create/link a trip
+4. Update progress as the trip executes
+5. Mark order as completed or cancelled
+
+## Typical Admin Actions
+
+| Action | Purpose |
+| --- | --- |
+| List orders | Populate dashboards and filters |
+| Create order | Register a new customer transport request |
+| Update order | Correct details, pricing, or status |
+| View order | Inspect a single order and linked entities |
+
+## Example Request
+
+```bash
+curl -X GET "https://api.smithsons.co.ke/admin/orders" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+<Tip>
+Use the API Reference for exact request/response schemas, query parameters, and validation rules.
+</Tip>
+
+## Status Design Recommendations
+
+Keep status transitions predictable for frontend and reporting logic. Example statuses:
+
+- `pending`
+- `assigned`
+- `in_transit`
+- `completed`
+- `cancelled`
+
+## Next Step
+
+Open the generated API Reference for the exact order endpoints and models.

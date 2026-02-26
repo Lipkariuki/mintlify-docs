@@ -1,0 +1,42 @@
+---
+title: Expenses Guide
+description: Guide to recording and reconciling trip-related expenses in Smithsons
+---
+
+Expenses capture the operational costs associated with executing trips.
+
+## Why Expenses Matter
+
+Accurate expense records help Smithsons teams:
+
+- Measure trip profitability
+- Reconcile partner payouts
+- Improve pricing decisions
+- Audit operational spending
+
+## Common Expense Types
+
+- Fuel
+- Tolls
+- Loading/offloading fees
+- Parking
+- Repairs or emergency costs
+- Other operational charges
+
+## Typical Workflow
+
+1. Create or submit an expense against a trip
+2. Review and verify submitted values
+3. Approve or adjust entries (admin workflow)
+4. Use totals for reconciliation and reporting
+
+## Example Request
+
+```bash
+curl -X GET "https://api.smithsons.co.ke/admin/expenses" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+<Tip>
+Standardize expense categories in your client apps to reduce reporting inconsistencies.
+</Tip>

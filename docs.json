@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Smithsons Logistics Documentation",
   "colors": {
-    "primary": "#0F172A",
-    "light": "#1E293B",
-    "dark": "#020617"
+    "primary": "#7C3AED",
+    "light": "#A855F7",
+    "dark": "#5B21B6"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -22,47 +22,19 @@
             ]
           },
           {
+            "group": "Operational Guides",
+            "pages": [
+              "smithsons/api/orders",
+              "smithsons/api/trips",
+              "smithsons/api/expenses",
+              "smithsons/api/users"
+            ]
+          },
+          {
             "group": "API Reference",
             "openapi": {
               "source": "https://smithsons-logistics.onrender.com/openapi.json"
             }
-          }
-        ]
-      },
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
           }
         ]
       }
@@ -72,7 +44,7 @@
         {
           "anchor": "Smithsons Dashboard",
           "href": "https://smithsons-logistics-frontend.onrender.com",
-          "icon": "box"
+          "icon": "truck"
         }
       ]
     }
@@ -84,13 +56,13 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
+        "label": "API Support",
         "href": "mailto:support@smithsons.co.ke"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Admin Dashboard",
+      "label": "Open Dashboard",
       "href": "https://smithsons-logistics-frontend.onrender.com/admin/orders"
     }
   },
