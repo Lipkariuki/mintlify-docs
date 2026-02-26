@@ -7,12 +7,16 @@ Smithsons Logistics powers order dispatch, trip tracking, expense recording, and
 
 Use this documentation to authenticate, call the API safely, and understand how Smithsons resources fit together.
 
+<Warning>
+<strong>Public Docs:</strong> This site is safe to share publicly. Private integration details such as authentication flows, credentials, and endpoint-level access requirements are only provided to approved partners and internal teams.
+</Warning>
+
 <CardGroup cols={2}>
   <Card title="Get Started Fast" icon="rocket" href="/smithsons/getting-started">
-    Authenticate and make your first API request in a few minutes.
+    Review the public integration overview and access requirements.
   </Card>
-  <Card title="Authentication" icon="lock" href="/smithsons/authentication">
-    Learn how JWT access tokens work and how to send them with requests.
+  <Card title="Request Private Access" icon="envelope" href="mailto:support@smithsons.co.ke">
+    Contact the Smithsons team for private onboarding and API credentials.
   </Card>
 </CardGroup>
 
@@ -29,10 +33,10 @@ Use this documentation to authenticate, call the API safely, and understand how 
 | Item | Details |
 | --- | --- |
 | API style | REST API |
-| Auth model | JWT bearer tokens |
+| Access model | Private partner access (issued by Smithsons) |
 | Backend | FastAPI |
 | Roles | Admin, Driver, Partner |
-| Spec | OpenAPI available in the API Reference section |
+| Spec access | Shared privately during onboarding |
 
 ## Base URLs
 
@@ -49,15 +53,13 @@ Use this documentation to authenticate, call the API safely, and understand how 
 Use the production URL only for live integrations. Keep local development and staging credentials separate.
 </Tip>
 
-## Authentication at a Glance
+## Access and Security
 
-All protected endpoints require a bearer token in the `Authorization` header.
+Smithsons API access is provisioned privately to approved partners and internal teams.
 
-```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
-
-Tokens are issued through the login flow. See `/smithsons/authentication` for the full workflow and examples.
+<Warning>
+Authentication flows, credential issuance, and endpoint-level security details are intentionally not published in this public documentation.
+</Warning>
 
 ## Core Resources
 
@@ -73,8 +75,7 @@ Tokens are issued through the login flow. See `/smithsons/authentication` for th
 Fetch all orders as an admin:
 
 ```bash
-curl -X GET "https://api.smithsons.co.ke/admin/orders" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+curl -X GET "https://api.smithsons.co.ke/admin/orders"
 ```
 
 ```json
@@ -93,10 +94,10 @@ curl -X GET "https://api.smithsons.co.ke/admin/orders" \
 
 <CardGroup cols={2}>
   <Card title="Quickstart Guide" icon="play" href="/smithsons/getting-started">
-    Go from credentials to your first authenticated request.
+    Review onboarding steps and request private API access.
   </Card>
-  <Card title="API Reference" icon="terminal">
-    Explore the complete schema generated from the Smithsons OpenAPI spec.
+  <Card title="Contact Smithsons" icon="envelope" href="mailto:support@smithsons.co.ke">
+    Request implementation support and private integration docs.
   </Card>
 </CardGroup>
 

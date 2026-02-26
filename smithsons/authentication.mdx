@@ -1,99 +1,31 @@
 ---
 title: Authentication
-description: JWT authentication flow, bearer token usage, and common auth errors for the Smithsons Logistics API
+description: Private onboarding notice for Smithsons Logistics API authentication
 ---
 
-Smithsons Logistics uses JWT bearer authentication for protected endpoints.
+Authentication and credential issuance details for the Smithsons Logistics API are not published in this public documentation.
 
-## Authentication Flow
+## Private Access Only
 
-1. Send credentials to the login endpoint
-2. Receive an `access_token`
-3. Attach the token to the `Authorization` header
-4. Call protected endpoints based on the user's role
+Private onboarding materials may include:
 
-## Login Endpoint
+- Authentication flow details
+- Credential provisioning instructions
+- Environment-specific endpoints
+- Role and permission mapping
+- Secure implementation guidance
 
-Use the Smithsons auth login route to obtain a token.
-
-```bash
-curl -X POST "https://api.smithsons.co.ke/auth/login" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "phone": "0722760992",
-    "password": "YOUR_PASSWORD"
-  }'
-```
-
-```json
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "token_type": "bearer",
-  "user": {
-    "id": 7,
-    "name": "Operations Admin",
-    "role": "admin"
-  }
-}
-```
-
-## Send the Token in Requests
-
-Add the JWT to the request header:
-
-```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
-
-Example:
-
-```bash
-curl -X GET "https://api.smithsons.co.ke/admin/orders" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-## Roles and Access
-
-Smithsons enforces role-based access control.
-
-| Role | Typical access |
-| --- | --- |
-| Admin | Full operational and management routes |
-| Driver | Assigned trips and delivery-related actions |
-| Partner | Partner-specific operational and financial visibility |
-
-<Note>
-Being authenticated does not guarantee access to every route. A valid token can still receive `403 Forbidden` if the user role is not allowed.
-</Note>
-
-## Best Practices
-
-- Store tokens securely on the server side when possible
-- Avoid exposing long-lived credentials in frontend code
-- Log out users and clear tokens when sessions end
-- Re-authenticate when the API returns token-expiry errors
-
-## Common Authentication Errors
-
-<AccordionGroup>
-  <Accordion icon="triangle-exclamation" title="401 Unauthorized">
-    The token is missing, malformed, expired, or signed with the wrong secret. Re-authenticate and retry the request.
-  </Accordion>
-  <Accordion icon="ban" title="403 Forbidden">
-    The user is authenticated but lacks permission for the endpoint.
-  </Accordion>
-  <Accordion icon="circle-exclamation" title="422 Validation Error">
-    The login request payload may be missing a required field such as `phone` or `password`.
-  </Accordion>
-</AccordionGroup>
-
-## Related Pages
+## Request Access
 
 <CardGroup cols={2}>
-  <Card title="Getting Started" icon="rocket" href="/smithsons/getting-started">
-    Full quickstart from login to your first protected request.
+  <Card title="Email Support" icon="envelope" href="mailto:support@smithsons.co.ke">
+    Request private API onboarding and authentication setup.
   </Card>
   <Card title="Introduction" icon="book-open" href="/smithsons/introduction">
-    Review platform concepts and the main Smithsons API resources.
+    Review the platform concepts and public integration overview.
   </Card>
 </CardGroup>
+
+<Warning>
+Do not share credentials, token payloads, or internal authentication procedures in public documentation.
+</Warning>

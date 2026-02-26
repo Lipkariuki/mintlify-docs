@@ -1,0 +1,226 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Smithsons Logistics API (Public Reference)",
+    "version": "1.0.0",
+    "description": "Public API reference for approved integration planning. Authentication and credential provisioning details are intentionally omitted from this public specification."
+  },
+  "servers": [
+    {
+      "url": "https://api.smithsons.co.ke",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Orders",
+      "description": "Order workflow endpoints. Access is provisioned privately."
+    },
+    {
+      "name": "Trips",
+      "description": "Trip tracking endpoints. Access is provisioned privately."
+    },
+    {
+      "name": "Expenses",
+      "description": "Expense recording and reconciliation endpoints. Access is provisioned privately."
+    },
+    {
+      "name": "Users",
+      "description": "User and role management endpoints. Access is provisioned privately."
+    }
+  ],
+  "paths": {
+    "/admin/orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "List orders",
+        "description": "Returns a list of logistics orders. Authentication and authorization requirements are shared privately during onboarding.",
+        "responses": {
+          "200": {
+            "description": "Orders retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/trips": {
+      "get": {
+        "tags": [
+          "Trips"
+        ],
+        "summary": "List trips",
+        "description": "Returns trip records used for dispatch and tracking workflows. Authentication details are omitted from this public spec.",
+        "responses": {
+          "200": {
+            "description": "Trips retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Trip"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/expenses": {
+      "get": {
+        "tags": [
+          "Expenses"
+        ],
+        "summary": "List expenses",
+        "description": "Returns expense records associated with logistics operations. Private onboarding is required for access.",
+        "responses": {
+          "200": {
+            "description": "Expenses retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Expense"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List users",
+        "description": "Returns platform users and roles for operational management. Private access approval is required.",
+        "responses": {
+          "200": {
+            "description": "Users retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 12
+          },
+          "order_number": {
+            "type": "string",
+            "example": "DHL-2025-001"
+          },
+          "customer_name": {
+            "type": "string",
+            "example": "DHL"
+          },
+          "destination": {
+            "type": "string",
+            "example": "Nairobi"
+          },
+          "status": {
+            "type": "string",
+            "example": "completed"
+          },
+          "total_amount": {
+            "type": "number",
+            "example": 85000
+          }
+        }
+      },
+      "Trip": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 41
+          },
+          "order_id": {
+            "type": "integer",
+            "example": 12
+          },
+          "status": {
+            "type": "string",
+            "example": "in_transit"
+          },
+          "driver_name": {
+            "type": "string",
+            "example": "John Doe"
+          }
+        }
+      },
+      "Expense": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 101
+          },
+          "trip_id": {
+            "type": "integer",
+            "example": 41
+          },
+          "category": {
+            "type": "string",
+            "example": "fuel"
+          },
+          "amount": {
+            "type": "number",
+            "example": 12000
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 7
+          },
+          "name": {
+            "type": "string",
+            "example": "Operations Admin"
+          },
+          "role": {
+            "type": "string",
+            "example": "admin"
+          },
+          "active": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      }
+    }
+  }
+}

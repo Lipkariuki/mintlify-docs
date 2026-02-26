@@ -1,15 +1,15 @@
 ---
 title: Getting Started
-description: Quickstart guide for authenticating and making your first Smithsons Logistics API request
+description: Public onboarding overview for requesting access to the Smithsons Logistics API
 ---
 
-This guide will help you authenticate and make your first request to the **Smithsons Logistics API** in minutes.
+This page explains how to request and prepare for access to the **Smithsons Logistics API** without exposing private authentication details.
 
 ## What You Will Do
 
-1. Confirm your credentials and API base URL
-2. Log in and obtain a JWT access token
-3. Send an authenticated request to a protected endpoint
+1. Confirm your use case and environment
+2. Request private API access from Smithsons
+3. Prepare your integration before onboarding credentials are issued
 
 ## Prerequisites
 
@@ -17,8 +17,8 @@ Before you begin, make sure you have:
 
 - An active Smithsons account
 - API access enabled
-- Your login credentials (email or phone + password)
-- A tool for making HTTP requests (e.g., curl, Postman, or your backend application)
+- A technical contact for onboarding
+- A tool for testing HTTP requests (e.g., curl, Postman, or your backend application)
 
 ## Base URL
 
@@ -29,93 +29,63 @@ Before you begin, make sure you have:
 `http://127.0.0.1:8000`
 
 <Warning>
-Do not hardcode production tokens into frontend apps. Route API calls through a secure backend where possible.
+Public documentation does not include authentication payloads, credentials, or token usage details.
 </Warning>
 
-## Step 1: Log In and Get an Access Token
+## Step 1: Request Private API Access
 
-Use your Smithsons login credentials to authenticate and retrieve a token.
+Contact the Smithsons team to request onboarding and private integration access.
 
-```bash
-curl -X POST "https://api.smithsons.co.ke/auth/login" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "phone": "0722760992",
-    "password": "YOUR_PASSWORD"
-  }'
-```
+Provide:
 
-Example response:
-
-```json
-{
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "token_type": "bearer",
-  "user": {
-    "id": 7,
-    "name": "Operations Admin",
-    "role": "admin"
-  }
-}
-```
+- Your company name
+- Integration use case (orders, trips, finance visibility, etc.)
+- Environment needed (sandbox/staging/production)
+- Technical contact email
+- Expected traffic/usage pattern (if known)
 
 <Tip>
-Some deployments may accept email instead of phone for login. Use the field format enabled in your Smithsons backend configuration.
+Private onboarding details are shared only with approved partners and internal teams.
 </Tip>
 
-## Step 2: Save the Token
+## Step 2: Prepare Your Integration
 
-Use the returned `access_token` in every protected request:
+Before credentials are issued, prepare:
 
-```http
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
+- Your backend service for secure server-to-server calls
+- Error handling and retry logic
+- Request logging and monitoring
+- A staging environment for integration testing
 
-## Step 3: Make Your First API Request
+## Step 3: Validate Connectivity (Optional)
 
-Example: fetch orders for the admin dashboard.
+You can verify your application can reach the API host before onboarding is completed.
 
 ```bash
-curl -X GET "https://api.smithsons.co.ke/admin/orders" \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+curl -I "https://api.smithsons.co.ke"
 ```
 
-Example response:
-
-```json
-[
-  {
-    "id": 12,
-    "order_number": "DHL-2025-001",
-    "customer_name": "DHL",
-    "destination": "Nairobi",
-    "status": "completed",
-    "total_amount": 85000
-  }
-]
-```
-
-## Common Issues
+## Public Notes
 
 <AccordionGroup>
-  <Accordion icon="key" title="401 Unauthorized">
-    Your token may be missing, invalid, or expired. Log in again and confirm the request includes `Authorization: Bearer YOUR_ACCESS_TOKEN`.
+  <Accordion icon="lock" title="Authentication details are not published">
+    Credential formats, token flows, and login request payloads are shared privately during onboarding.
   </Accordion>
-  <Accordion icon="shield-exclamation" title="403 Forbidden">
-    Your account is authenticated but does not have permission for that route. For example, driver accounts should not call admin-only endpoints.
+  <Accordion icon="globe" title="Base URL is public, access is controlled">
+    The API host may be publicly reachable, but protected routes require private access provisioning.
   </Accordion>
-  <Accordion icon="globe" title="Connection or CORS errors">
-    Confirm you are using the correct base URL (`production` vs `local`) and that your backend allows requests from your application origin.
+  <Accordion icon="shield" title="Use a backend for integration">
+    Smithsons recommends server-side integrations for secure handling of credentials and operational data.
   </Accordion>
 </AccordionGroup>
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Authentication Details" icon="lock" href="/smithsons/authentication">
-    Learn bearer token usage, security notes, and integration best practices.
+  <Card title="Request Access" icon="envelope" href="mailto:support@smithsons.co.ke">
+    Contact Smithsons to receive private onboarding instructions.
   </Card>
-  <Card title="Explore API Reference" icon="terminal">
-    Browse the full Smithsons API endpoints from the OpenAPI-generated reference.
+  <Card title="Overview" icon="book-open" href="/smithsons/introduction">
+    Review the platform and operational resource model.
   </Card>
 </CardGroup>

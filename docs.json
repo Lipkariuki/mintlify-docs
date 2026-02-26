@@ -17,8 +17,7 @@
             "group": "Overview",
             "pages": [
               "smithsons/introduction",
-              "smithsons/getting-started",
-              "smithsons/authentication"
+              "smithsons/getting-started"
             ]
           },
           {
@@ -33,7 +32,7 @@
           {
             "group": "API Reference",
             "openapi": {
-              "source": "https://smithsons-logistics.onrender.com/openapi.json"
+              "source": "/openapi-public.json"
             }
           }
         ]
@@ -42,9 +41,9 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Smithsons Dashboard",
-          "href": "https://smithsons-logistics-frontend.onrender.com",
-          "icon": "truck"
+          "anchor": "Request Private Access",
+          "href": "mailto:support@smithsons.co.ke",
+          "icon": "envelope"
         }
       ]
     }
@@ -56,15 +55,10 @@
   "navbar": {
     "links": [
       {
-        "label": "API Support",
+        "label": "Private Access",
         "href": "mailto:support@smithsons.co.ke"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Open Dashboard",
-      "href": "https://smithsons-logistics-frontend.onrender.com/admin/orders"
-    }
+    ]
   },
   "contextual": {
     "options": [
